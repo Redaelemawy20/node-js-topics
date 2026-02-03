@@ -1,0 +1,58 @@
+### Variables
+@baseUrl = http://localhost:3000
+@apiUrl = {{baseUrl}}/api/posts
+
+### Get all posts
+GET {{apiUrl}}
+Content-Type: application/json
+
+### Get post by ID
+GET {{apiUrl}}/1
+Content-Type: application/json
+
+### Create a new post
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "title": "My First Post",
+  "content": "This is the content of my first post."
+}
+
+### Create another post
+POST {{apiUrl}}
+Content-Type: application/json
+
+{
+  "title": "Second Post",
+  "content": "This is another post with different content."
+}
+
+### Update post title only
+PUT {{apiUrl}}/1
+Content-Type: application/json
+
+{
+  "title": "Updated Post Title"
+}
+
+### Update post content only
+PUT {{apiUrl}}/1
+Content-Type: application/json
+
+{
+  "content": "This is the updated content for the post."
+}
+
+### Update both title and content
+PUT {{apiUrl}}/1
+Content-Type: application/json
+
+{
+  "title": "Fully Updated Post",
+  "content": "This post has been completely updated with new title and content."
+}
+
+### Delete a post
+DELETE {{apiUrl}}/1
+Content-Type: application/json
