@@ -13,32 +13,15 @@ const pool = mysql.createPool({
 });
 
 async function getConnection() {
-  try {
-    const connection = await pool.getConnection();
-    return connection;
-  } catch (error) {
-    console.error('Error getting database connection:', error.message);
-    throw error;
-  }
+  return await pool.getConnection();
 }
 
 async function testConnection() {
-  try {
-    const connection = await pool.getConnection();
-    console.log('Successfully connected to MySQL database');
-    
-    const [rows] = await connection.execute('SELECT VERSION() as version');
-    console.log('MySQL Version:', rows[0].version);
-    
-    const [dbRows] = await connection.execute('SELECT DATABASE() as current_db');
-    console.log('Current Database:', dbRows[0].current_db);
-    
-    connection.release();
-    return true;
-  } catch (error) {
-    console.error('Connection test failed:', error.message);
-    throw error;
-  }
+  const connection = await pool.getConnection();
+  await connection.execute('SELECT VERSION()');
+  await connection.execute('SELECT DATABASE()');
+  connection.release();
+  return true;
 }
 
 module.exports = {
