@@ -1,0 +1,17 @@
+{
+  "name": "aws-rds-experiments",
+  "version": "1.0.0",
+  "description": "AWS RDS MySQL connection experiments",
+  "main": "test-connection.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node test-connection.js"
+  },
+  "keywords": ["aws", "rds", "mysql", "database"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mysql2": "^3.6.5",
+    "dotenv": "^16.4.5"
+  }
+}
