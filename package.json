@@ -1,12 +1,12 @@
 {
   "name": "node-js-topics",
   "version": "1.0.0",
-  "description": "",
+  "description": "A learning project demonstrating Node.js concepts including Express rate limiting and file streams (readable/writable)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["nodejs", "express", "rate-limiting", "streams", "learning", "tutorial"],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
