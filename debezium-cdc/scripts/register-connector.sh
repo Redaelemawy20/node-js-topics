@@ -22,8 +22,8 @@ curl -sS -f -w "\nHTTP %{http_code}\n" -X POST -H "Content-Type: application/jso
     "topic.prefix": "orders_db",
     "database.include.list": "orders",
     "table.include.list": "orders.orders",
-    "database.history.kafka.bootstrap.servers": "kafka:29092",
-    "database.history.kafka.topic": "schema-changes.orders"
+    "schema.history.internal.kafka.bootstrap.servers": "kafka:29092",
+    "schema.history.internal.kafka.topic": "schema-changes.orders"
   }
 }' "${CONNECT_URL}"
 

@@ -88,7 +88,7 @@ pnpm install
 
 ## 3. Register the Debezium MySQL connector
 
-**Important:** `database.server.id` must differ from MySQL’s `server-id` (`223344` in Compose). The examples use `184054` for the connector. Current Debezium builds require **`topic.prefix`** (here `orders_db`); table events still land on **`orders_db.orders`**.
+**Important:** `database.server.id` must differ from MySQL’s `server-id` (`223344` in Compose). The examples use `184054` for the connector. Current Debezium builds require **`topic.prefix`** (here `orders_db`); table events still land on **`orders_db.orders`**. Schema history must use **`schema.history.internal.kafka.bootstrap.servers`** and **`schema.history.internal.kafka.topic`** (the older `database.history.kafka.*` keys are not accepted).
 
 With Connect running on `localhost:8083`, register the connector from the `debezium-cdc` folder:
 
@@ -110,7 +110,7 @@ Optional: set **`CONNECT_URL`** if Connect is not at `http://localhost:8083/conn
 **Manual `curl` (equivalent):**
 
 ```powershell
-curl.exe -X POST -H "Content-Type: application/json" -d "{\"name\":\"mysql-orders-connector\",\"config\":{\"connector.class\":\"io.debezium.connector.mysql.MySqlConnector\",\"tasks.max\":\"1\",\"database.hostname\":\"mysql\",\"database.port\":\"3306\",\"database.user\":\"debezium\",\"database.password\":\"dbz\",\"database.server.id\":\"184054\",\"topic.prefix\":\"orders_db\",\"database.include.list\":\"orders\",\"table.include.list\":\"orders.orders\",\"database.history.kafka.bootstrap.servers\":\"kafka:29092\",\"database.history.kafka.topic\":\"schema-changes.orders\"}}" http://localhost:8083/connectors
+curl.exe -X POST -H "Content-Type: application/json" -d "{\"name\":\"mysql-orders-connector\",\"config\":{\"connector.class\":\"io.debezium.connector.mysql.MySqlConnector\",\"tasks.max\":\"1\",\"database.hostname\":\"mysql\",\"database.port\":\"3306\",\"database.user\":\"debezium\",\"database.password\":\"dbz\",\"database.server.id\":\"184054\",\"topic.prefix\":\"orders_db\",\"database.include.list\":\"orders\",\"table.include.list\":\"orders.orders\",\"schema.history.internal.kafka.bootstrap.servers\":\"kafka:29092\",\"schema.history.internal.kafka.topic\":\"schema-changes.orders\"}}" http://localhost:8083/connectors
 ```
 
 ```bash
@@ -128,8 +128,8 @@ curl -X POST -H "Content-Type: application/json" \
     "topic.prefix": "orders_db",
     "database.include.list": "orders",
     "table.include.list": "orders.orders",
-    "database.history.kafka.bootstrap.servers": "kafka:29092",
-    "database.history.kafka.topic": "schema-changes.orders"
+    "schema.history.internal.kafka.bootstrap.servers": "kafka:29092",
+    "schema.history.internal.kafka.topic": "schema-changes.orders"
   }
 }' http://localhost:8083/connectors
 ```
