@@ -1,0 +1,13 @@
+{
+  "name": "debezium-cdc-reporting",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Consumes Debezium CDC events from Kafka (reporting / downstream view)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4"
+  }
+}

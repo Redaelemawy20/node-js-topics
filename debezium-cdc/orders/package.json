@@ -1,0 +1,14 @@
+{
+  "name": "debezium-cdc-orders",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Order service: HTML form + insert into MySQL (CDC source)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "mysql2": "^3.11.0"
+  }
+}

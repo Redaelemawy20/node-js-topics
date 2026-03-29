@@ -1,0 +1,8 @@
+{
+  "name": "debezium-cdc",
+  "private": true,
+  "scripts": {
+    "orders": "pnpm --filter debezium-cdc-orders start",
+    "reporting": "pnpm --filter debezium-cdc-reporting start"
+  }
+}
